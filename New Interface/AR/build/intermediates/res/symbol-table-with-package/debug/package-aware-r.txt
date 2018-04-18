@@ -1,0 +1,11 @@
+com.gonzaga.walkgonzaga
+int drawable app_banner 0x7f090001
+int drawable app_icon 0x7f090002
+int id bt_rotRight 0x7f0c0001
+int id frameLayout 0x7f0c0002
+int id nextSceneButton 0x7f0c0003
+int id relativeLayout 0x7f0c0004
+int layout arcamera_activity 0x7f0f0001
+int string app_name 0x7f150001
+int style UnityThemeSelector 0x7f160001
+int style UnityThemeSelector_Translucent 0x7f160002

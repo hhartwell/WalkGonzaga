@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Practice</string>
+    <string name="title_home">Home</string>
+    <string name="title_tours">Tours</string>
+    <string name="title_gallery">Visited</string>
+    <string name="title_profile">Distance</string>
+    <string name="title_instructions">Instructions</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_history_display">Zag Walk Step History</string>
+    <string name="action_settings">Settings</string>
+</resources>
+

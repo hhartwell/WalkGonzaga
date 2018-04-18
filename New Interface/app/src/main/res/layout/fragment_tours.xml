@@ -1,0 +1,91 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C1C6C8"
+    tools:context="com.example.schwartz.myapplication.ToursFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="56dp"
+        android:layout_marginTop="150dp">
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:columnCount="1">
+
+            <Button
+                android:id="@+id/tour1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="50px"
+                android:background="#C8102E"
+                android:fontFamily="@font/raleway"
+                android:text="Residence Halls"
+                android:textColor="#C1C6C8"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/tour2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="50px"
+                android:background="#C8102E"
+                android:fontFamily="@font/raleway"
+                android:text="Tour 2"
+                android:textColor="#C1C6C8"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/tour3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="50px"
+                android:background="#C8102E"
+                android:fontFamily="@font/raleway"
+                android:text="Tour 3"
+                android:textColor="#C1C6C8"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/tour4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="50px"
+                android:background="#C8102E"
+                android:fontFamily="@font/raleway"
+                android:text="Tour 4"
+                android:textColor="#C1C6C8"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/tour5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="50px"
+                android:background="#C8102E"
+                android:fontFamily="@font/raleway"
+                android:text="Tour 5"
+                android:textColor="#C1C6C8"
+                android:textSize="20sp" />
+        </GridLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100px"
+        android:layout_marginLeft="50px"
+        android:layout_marginRight="50px"
+        android:layout_marginTop="20px"
+        android:fontFamily="@font/raleway"
+        android:text="Please Pick A Tour:"
+        android:textAlignment="center"
+        android:textColor="#041E42"
+        android:textSize="55dp" />
+
+</FrameLayout>

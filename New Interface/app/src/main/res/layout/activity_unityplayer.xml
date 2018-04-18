@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:rowCount="3"
+    android:columnCount="10">
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_column="4"
+        android:layout_row="0"
+        android:background="#ff00ff15">
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/bt_rotRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignBottom="@+id/frameLayout"
+        android:layout_alignEnd="@+id/frameLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_column="4"
+        android:layout_row="2"
+        android:elevation="2dp"
+        android:text="Gallery" />
+
+</RelativeLayout>

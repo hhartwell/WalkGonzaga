@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dorms">
+        <item><b>Please Select A Dorm:</b></item>
+        <item><b>Alliance House</b></item>
+        <!--<item><b>Campion House</b></item>-->
+        <item><b>Catherine/Monica Hall</b></item>
+        <item><b>Crimont Hall</b></item>
+        <item><b>DeSmet Hall</b></item>
+        <item><b>Madonna Hall</b></item>
+        <item><b>Rebmann</b></item>
+        <item><b>Robinson</b></item>
+        <item><b>Welch Hall</b></item>
+    </string-array>
+    <string-array name="dorm_gallery_urls">
+        <item><b>http://147.222.165.81/~hhartwell/alliance.jpg</b></item>
+        <item><b>http://147.222.165.81/~hhartwell/catherinemonica.jpg</b></item>
+        <item><b>http://147.222.165.81/~hhartwell/crimont.jpg</b></item>
+        <item><b>http://147.222.165.81/~hhartwell/desmet.jpg</b></item>
+        <item><b>http://147.222.165.81/~hhartwell/madonna.jpg</b></item>
+        <item><b>http://147.222.165.81/~hhartwell/welch.jpg</b></item>
+    </string-array>
+</resources>

@@ -1,0 +1,130 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C1C6C8"
+    tools:context="com.example.schwartz.myapplication.GalleryFragment">
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="56dp"
+        android:layout_marginTop="200dp">
+
+        <GridLayout
+            android:id="@+id/grid_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:columnCount="1">
+
+            <Button
+                android:id="@+id/alliance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="50px"
+                android:background="#C8102E"
+                android:fontFamily="@font/raleway"
+                android:text="Alliance Hall"
+                android:textColor="#C1C6C8"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/catherineMonica"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="50px"
+                android:background="#C8102E"
+                android:fontFamily="@font/raleway"
+                android:text="Catherine-Monica Hall"
+                android:textColor="#C1C6C8"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/crimont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="50px"
+                android:background="#C8102E"
+                android:fontFamily="@font/raleway"
+                android:text="Crimont Hall"
+                android:textColor="#C1C6C8"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/desmet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="50px"
+                android:background="#C8102E"
+                android:fontFamily="@font/raleway"
+                android:text="Desmet Hall"
+                android:textColor="#C1C6C8"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/madonna"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="50px"
+                android:background="#C8102E"
+                android:fontFamily="@font/raleway"
+                android:text="Madonna Hall"
+                android:textColor="#C1C6C8"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/redmond"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="50px"
+                android:background="#C8102E"
+                android:fontFamily="@font/raleway"
+                android:text="Redmond Hall"
+                android:textColor="#C1C6C8"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/robinson"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="50px"
+                android:background="#C8102E"
+                android:fontFamily="@font/raleway"
+                android:text="Robinson Hall"
+                android:textColor="#C1C6C8"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/welch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="50px"
+                android:background="#C8102E"
+                android:fontFamily="@font/raleway"
+                android:text="Welch Hall"
+                android:textColor="#C1C6C8"
+                android:textSize="20sp" />
+        </GridLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100px"
+        android:layout_marginLeft="50px"
+        android:layout_marginRight="50px"
+        android:layout_marginTop="20px"
+        android:fontFamily="@font/raleway"
+        android:text="Please Pick A Residence Hall To View:"
+        android:textAlignment="center"
+        android:textColor="#041E42"
+        android:textSize="55dp" />
+
+</FrameLayout>
+
+
+
+

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id = "@+id/relativeLayout"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:rowCount="3"
+    android:columnCount="10"
+    android:background="#00ffff">
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="250dip"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="#ff00ff15">
+        <!--
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/floatingActionButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/frameLayout"
+                    android:layout_marginTop="67dp"
+                    android:layout_toEndOf="@+id/nextSceneButton"
+                    android:layout_toRightOf="@+id/nextSceneButton"
+                    android:clickable="true"
+                    android:src="@android:drawable/ic_notification_overlay" />
+            -->
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/bt_rotRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
+    //android:text="@string/rotate_right" />
+
+    <Button
+        android:id="@+id/nextSceneButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="please work" />
+
+
+</RelativeLayout>

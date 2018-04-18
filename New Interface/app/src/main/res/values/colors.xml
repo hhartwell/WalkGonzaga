@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#C8102E</color>
+    <color name="colorPrimaryDark">#C8102E</color>
+    <color name="colorAccent">#C8102E</color>
+    <color name="white">#ffff</color>
+    <color name="colorDarkBlue">#002D72</color>
+    <color name="colorDarkRed">#CC0033</color>
+    <color name="bullDogRed">#CC0033</color>
+    <color name="bullDogBlue">#002d72</color>
+    <color name="victoryBlue">#0072CE</color>
+    <color name="cinderellaBule">#002aff</color>
+    <color name="gradient_start">#CC0033</color>
+    <color name="gradient_end">#0072ce</color>
+    <color name="navy">#000080</color>
+    <color name="black">#000000</color>
+</resources>
