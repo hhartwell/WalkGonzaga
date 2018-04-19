@@ -1,5 +1,6 @@
 package com.example.schwartz.myapplication;
 
+import android.util.Log;
 import android.widget.ImageButton;
 
 import java.util.ArrayList;
@@ -33,6 +34,8 @@ import java.util.concurrent.ExecutionException;
  */
 public class GalleryFragment extends Fragment {
 
+    final private String TAG = "GALLERYFRAGMENT";
+
     /**
      * Empty Constructor
      */
@@ -57,42 +60,72 @@ public class GalleryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_gallery, container, false);
-        if(savedInstanceState != null){
-            // if we are currently visiting a dorm
-            // the galleryFragment needs to display that dorm's gallery
-            ArrayList<ImageButton> imageButtons = assignAllPicturesToGalleryFragment(determineDormResouceValue(savedInstanceState));
-            GridLayout gridLayout = reformatView(rootView);
-            for (int i = 0; i < imageButtons.size(); i++){
-            gridLayout.addView(imageButtons.get(i));
-        }
-            return rootView;
+        if (getActivity().getIntent().hasExtra("dormVisited")) {
+            // the fragment has recognized that the intent has the dormvisited Stringextra attatched to it
+            if (getActivity().getIntent().getExtras().getString("dormVisited") != null) {
+                // the dormVisited string extra has been successfully filled and the gallery can display a gallery that corresponds to the correct dorm.
+                Log.d(TAG, "intent recieved and dorm visited not null");
+
+                // if we are currently visiting a dorm
+                // the galleryFragment needs to display that dorm's gallery
+                ArrayList<ImageButton> imageButtons = assignAllPicturesToGalleryFragment(determineDormResouceValue(savedInstanceState));
+                GridLayout gridLayout = reformatView(rootView);
+                for (int i = 0; i < imageButtons.size(); i++) {
+                    gridLayout.addView(imageButtons.get(i));
+                }
+                return rootView;
+            }
+            else{
+                return rootView;
+            }
         }
         else {
+            Log.d(TAG, "saved instance state was null");
             // add all images into the fragment
             return rootView;
         }
     }
 
     /**
-     * function used to reformat the gallery fragment view so that it can show a gallery
+     * function used to reformat the gallery fragment view so that it can show a gallery.
+     * Should only be running when coming from the ar camera scene.
      * @param rootView
      */
     private GridLayout reformatView(View rootView){
+        // gets all the views we will be dealing with
         ScrollView scrollView = (ScrollView) rootView.findViewById(R.id.scroll_view);
         TextView textView = (TextView) rootView.findViewById(R.id.textView);
         GridLayout gridLayout = (GridLayout) rootView.findViewById(R.id.grid_layout);
+
+        // remove the text view and gridlayout
         ((ViewGroup) textView.getParent()).removeView(textView);
         ((ViewGroup) gridLayout.getParent()).removeView(gridLayout);
+
+        // create the new grid layout
         GridLayout newGridLayout = new GridLayout(getContext());
         newGridLayout.setColumnCount(2);
         newGridLayout.setColumnOrderPreserved(true);
-        newGridLayout.setOrientation(GridLayout.VERTICAL);
+        newGridLayout.setOrientation(GridLayout.HORIZONTAL);
+
+        // format the existing scroll view to fill the whole screen
         scrollView.addView(newGridLayout);
+        ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) scrollView.getLayoutParams();
+        p.setMargins(0, 0, 0, 0);
+        scrollView.setLayoutParams(p);
+
+        // return the new gridlayout where images can be placed
         return newGridLayout;
     }
+
+    /**
+     * helper funciton to determine which dorm urls to pull based on the bundle that is recieved.
+     * @param bundle
+     * @return
+     */
     private int determineDormResouceValue(Bundle bundle){
         Bundle bundle1 = this.getArguments();
         String dormVisited = bundle1.getString("dormVisited");
+        Log.d(TAG, "dormVisited: " + dormVisited);
         switch(dormVisited){
             case "Desmet Hall":
                 return R.array.dorm_gallery_urls;
@@ -118,7 +151,7 @@ public class GalleryFragment extends Fragment {
     }
 
     /**
-     *
+     * assigns drawables from the drawable array to the image buttons from the imagebuttons array
      * @param imageButtons
      * @param drawables
      */

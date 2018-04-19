@@ -13,6 +13,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.android.gms.location.Geofence;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
  */
 public class MainActivity extends AppCompatActivity  {
 
-
+    final private String TAG = "MAINACTIVITY: ";
 
     /**
      * Listener for the bottom navigation
@@ -113,6 +114,25 @@ public class MainActivity extends AppCompatActivity  {
             loadFragment(new HomeFragment());
         }
         getSupportActionBar().hide();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "ONRESUME");
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null){
+            Log.d(TAG, "bundle: " + bundle.getString("dormVisited"));
+            Bundle extras = getIntent().getExtras();
+            GalleryFragment galleryFragment = new GalleryFragment();
+            galleryFragment.setArguments(extras);
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frame_container, galleryFragment);
+            transaction.commit();
+        }
+        else {
+            loadFragment(new HomeFragment());
+        }
     }
 
     /**

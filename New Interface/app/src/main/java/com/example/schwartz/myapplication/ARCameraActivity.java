@@ -38,12 +38,12 @@ public class ARCameraActivity extends UnityPlayerActivity {
         super.onCreate(savedInstanceState);
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
-            if (extras == null) {
+            if (extras.getString("dormVisited") == null) {
                 Log.d(TAG, "activity launched without anything in the intent");
             } else {
                 dormVisited = getIntent().getExtras().getString("dormVisited");
                 Log.d(TAG, getIntent().getExtras().toString());
-                Log.d(TAG, "extra received successfully: " + dormVisited);
+                Log.d(TAG, "extra received successfully by child: " + dormVisited);
             }
         }
         else{
@@ -70,5 +70,10 @@ public class ARCameraActivity extends UnityPlayerActivity {
     protected void onDestroy() {
         super.onDestroy();
         finish();
+    }
+    @Override
+    protected void onPause(){
+        super.onPause();
+        onDestroy();
     }
 }

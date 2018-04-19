@@ -108,10 +108,11 @@ public class GeoFenceHelperService extends IntentService {
 //                // ex.printStackTrace();
 //            }
         }
-            Intent i = new Intent(this, ARCameraActivity.class);
-            i.putExtra("dormVisited", geoStr);
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(i);
+
+//            Intent i = new Intent(this, ARCameraActivity.class);
+//            i.putExtra("dormVisited", geoStr);
+//            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            startActivity(i);
 
         }
 }
