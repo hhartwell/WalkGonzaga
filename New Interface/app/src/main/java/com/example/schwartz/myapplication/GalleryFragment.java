@@ -73,6 +73,7 @@ public class GalleryFragment extends Fragment {
                 for (int i = 0; i < imageButtons.size(); i++) {
                     gridLayout.addView(imageButtons.get(i));
                 }
+                // remove the dormVisited field from the intent so that it wont crash when the fragment is started again.
                 getActivity().getIntent().removeExtra("dormVisited");
                 return rootView;
             }
@@ -129,7 +130,7 @@ public class GalleryFragment extends Fragment {
         Log.d(TAG, "dormVisited: " + dormVisited);
         switch(dormVisited){
             case "Desmet Hall":
-                return R.array.dorm_gallery_urls;
+                return R.array.desmet_gallery_url;
             default:
                 return R.array.dorm_gallery_urls;
         }
@@ -145,9 +146,7 @@ public class GalleryFragment extends Fragment {
             for (int i = 0; i < getContext().getResources().getStringArray(dormurlsresouce).length; i++) {
                 imageButtons.add(new ImageButton(getContext()));
             }
-
             assignDrawablesToImageButtons(imageButtons, getDormDrawables(getContext().getResources().getStringArray(dormurlsresouce)));
-
             return imageButtons;
     }
 

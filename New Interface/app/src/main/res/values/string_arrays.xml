@@ -20,4 +20,18 @@
         <item><b>http://147.222.165.81/~hhartwell/madonna.jpg</b></item>
         <item><b>http://147.222.165.81/~hhartwell/welch.jpg</b></item>
     </string-array>
+    <string-array name="desmet_gallery_url">
+        <item>http://147.222.165.81/~hhartwell/desmet1.jpg<b></b></item>
+        <item>http://147.222.165.81/~hhartwell/desmet2.jpg<b></b></item>
+        <item>http://147.222.165.81/~hhartwell/desmet3.jpg<b></b></item>
+        <item>http://147.222.165.81/~hhartwell/desmet4.jpg<b></b></item>
+        <item>http://147.222.165.81/~hhartwell/desmet5.jpg<b></b></item>
+        <item>http://147.222.165.81/~hhartwell/desmet6.jpg<b></b></item>
+        <item>http://147.222.165.81/~hhartwell/desmet7.jpg<b></b></item>
+        <item>http://147.222.165.81/~hhartwell/desmet8.jpg<b></b></item>
+        <item>http://147.222.165.81/~hhartwell/desmet9.jpg<b></b></item>
+        <item>http://147.222.165.81/~hhartwell/desmet10.jpg<b></b></item>
+        <item>http://147.222.165.81/~hhartwell/desmet11.jpg<b></b></item>
+        <item>http://147.222.165.81/~hhartwell/desmet12.jpg<b></b></item>
+    </string-array>
 </resources>
