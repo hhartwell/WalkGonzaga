@@ -16,10 +16,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.Geofence;
+import com.google.android.gms.location.GeofencingClient;
+import com.google.android.gms.location.LocationServices;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Main Activity that controls all that goes on in the app
@@ -133,6 +138,17 @@ public class MainActivity extends AppCompatActivity  {
         else {
             loadFragment(new HomeFragment());
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        String[] values = new String[]{"Crosby", "Dani's House", "Alliance House", "Campion House", "Catherine Monica Hall",
+                "Crimont Hall", "Desmet Hall", "Madonna Hall", "Rebmann",
+                "Robinson", "Welch Hall"};
+        List<String> vals = Arrays.asList(values);
+        GeofencingClient geofencingClient = LocationServices.getGeofencingClient(this);
+        geofencingClient.removeGeofences(vals);
     }
 
     /**

@@ -30,6 +30,8 @@ import android.widget.TextView;
 
 import java.util.concurrent.ExecutionException;
 
+// TODO when Desmet activity is started from the default
+
 /**
  * Fragment class that displays the images for the gallery screen.
  */
@@ -94,13 +96,13 @@ public class GalleryFragment extends Fragment {
     /**
      * helper function used to set up the initial buttons if user is not currently taking a tour
      */
-    private void assignOnClickListenersToButtons(View view){
+    private void assignOnClickListenersToButtons(View rootView){
+        final View view = rootView;
         Button desmetButton = (Button) view.findViewById(R.id.desmet);
         desmetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "desmetClicked");
-                Intent i = new Intent(getActivity(), DesmetActivity.class);
+                Intent i = new Intent(getActivity(), MainActivity.class);
                 i.putExtra("dormVisited", "Desmet Hall");
                 getActivity().startActivity(i);
             }
@@ -119,7 +121,7 @@ public class GalleryFragment extends Fragment {
                 imageButtons.get(0).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent i = new Intent(getActivity(), DesmetActivity.class);
+                        Intent i = new Intent(getActivity(), FatherDesmetActivity.class);
                         i.putExtra("dormVisited", dorm);
                         getActivity().startActivity(i);
                     }
