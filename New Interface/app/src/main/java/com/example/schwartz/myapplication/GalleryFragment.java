@@ -1,6 +1,7 @@
 package com.example.schwartz.myapplication;
 
 import android.util.Log;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import java.util.ArrayList;
@@ -79,15 +80,38 @@ public class GalleryFragment extends Fragment {
                 return rootView;
             }
             else{
+                assignOnClickListenersToButtons(rootView);
                 return rootView;
             }
         }
         else {
             Log.d(TAG, "saved instance state was null");
-            // add all images into the fragment
+            assignOnClickListenersToButtons(rootView);
             return rootView;
         }
     }
+
+    /**
+     * helper function used to set up the initial buttons if user is not currently taking a tour
+     */
+    private void assignOnClickListenersToButtons(View view){
+        Button desmetButton = (Button) view.findViewById(R.id.desmet);
+        desmetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "desmetClicked");
+                Intent i = new Intent(getActivity(), DesmetActivity.class);
+                i.putExtra("dormVisited", "Desmet Hall");
+                getActivity().startActivity(i);
+            }
+        });
+    }
+
+    /**
+     * helper function used to set up the programmatically generated image buttons
+     * @param imageButtons
+     * @param dormVisited
+     */
     private void assignOnClickListeners(ArrayList<ImageButton> imageButtons, String dormVisited){
         final String dorm = dormVisited;
         switch(dormVisited){
