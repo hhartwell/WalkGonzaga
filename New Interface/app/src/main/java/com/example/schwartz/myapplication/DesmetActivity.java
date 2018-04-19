@@ -6,6 +6,7 @@ package com.example.schwartz.myapplication;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -14,7 +15,7 @@ import android.widget.ImageButton;
  * Activity class that gets Desmet images
  */
 public class DesmetActivity extends AppCompatActivity {
-
+    final private String TAG = "DESMETACTIVITY";
     /**
      * Creates actions for this Activity
      * @param savedInstanceState
@@ -68,11 +69,20 @@ public class DesmetActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                gallery();
+                Log.d(TAG, "back button?");
+                Intent i = new Intent(this, MainActivity.class);
+                i.putExtra("dormVisited", "Desmet Hall");
+                startActivity(i);
                 finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        moveTaskToBack(true);
     }
 }

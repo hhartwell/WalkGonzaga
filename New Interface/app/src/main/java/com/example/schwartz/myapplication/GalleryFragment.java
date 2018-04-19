@@ -73,6 +73,7 @@ public class GalleryFragment extends Fragment {
                 for (int i = 0; i < imageButtons.size(); i++) {
                     gridLayout.addView(imageButtons.get(i));
                 }
+                assignOnClickListeners(imageButtons, getActivity().getIntent().getExtras().getString("dormVisited"));
                 // remove the dormVisited field from the intent so that it wont crash when the fragment is started again.
                 getActivity().getIntent().removeExtra("dormVisited");
                 return rootView;
@@ -87,7 +88,20 @@ public class GalleryFragment extends Fragment {
             return rootView;
         }
     }
-
+    private void assignOnClickListeners(ArrayList<ImageButton> imageButtons, String dormVisited){
+        final String dorm = dormVisited;
+        switch(dormVisited){
+            case "Desmet Hall":
+                imageButtons.get(0).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(getActivity(), DesmetActivity.class);
+                        i.putExtra("dormVisited", dorm);
+                        getActivity().startActivity(i);
+                    }
+                });
+        }
+    }
     /**
      * function used to reformat the gallery fragment view so that it can show a gallery.
      * Should only be running when coming from the ar camera scene.
