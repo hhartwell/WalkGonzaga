@@ -73,6 +73,7 @@ public class GalleryFragment extends Fragment {
                 for (int i = 0; i < imageButtons.size(); i++) {
                     gridLayout.addView(imageButtons.get(i));
                 }
+                getActivity().getIntent().removeExtra("dormVisited");
                 return rootView;
             }
             else{
