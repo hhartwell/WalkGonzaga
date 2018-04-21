@@ -10,6 +10,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.hardware.Sensor;
@@ -103,7 +104,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     private LatLng destLatLng;
     private ProgressDialog progressDialog;
     private List<Marker> originMarkers = new ArrayList<>();
-    private ArrayList<Boolean> isVisited = new ArrayList<>();// for next nearest location
+
     private ArrayList<LatLng> destinationPoint;
     private List<Polyline> polylinePaths = new ArrayList<>();
     private Marker mCurrLocationMarker;
@@ -120,10 +121,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     private Geofence geofence;
     private PendingIntent pendingIntent;
     private ArrayList<Geofence> geofenceList;
-    private String[] values = new String[]{"Crosby", "Dani's House", "Alliance House", "Campion House", "Catherine Monica Hall",
+    private String[] values = new String[]{"Library", "Alliance House", "Campion House", "Catherine Monica Hall",
             "Crimont Hall", "Desmet Hall", "Madonna Hall", "Rebmann",
             "Robinson", "Welch Hall"};
-    private String geoStrFile = "geoStrFile.txt";
+
     // number picker variables
     Button numberPicker;
     SupportMapFragment mapFragment;
@@ -143,10 +144,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         if (savedInstanceState != null) {
             mLastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
         }
-
+        Log.d(TAG, "onCreate: RUNNING");
         destinationPoint = new ArrayList<>();
-        destinationPoint.add(new LatLng(47.667246,-117.401390)); // crosby
-        destinationPoint.add(new LatLng(47.655256, -117.463520));//Dani's house
+        //destinationPoint.add(new LatLng(47.667246,-117.401390)); // crosby
+        //destinationPoint.add(new LatLng(47.655256, -117.463520));//Dani's house
+        destinationPoint.add(new LatLng(47.666480, -117.400895));//Library
         destinationPoint.add(new LatLng(47.668670, -117.400111));//Alliance
         destinationPoint.add(new LatLng(47.668663, -117.401090));//Campion
         destinationPoint.add(new LatLng(47.665921, -117.397811));//Catherine/Monica
@@ -157,10 +159,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         destinationPoint.add(new LatLng(47.668507, -117.404350));//Robinson
         destinationPoint.add(new LatLng(47.667649, -117.400308));//Welsh
         super.onCreate(savedInstanceState);
-        //create boolean list for next nearest destination
-        for(int i = 0; i < destinationPoint.size(); i++){
-            isVisited.add(false);
-        }
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -175,7 +174,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         Button btnFindPath = view.findViewById(R.id.btnFindPath);
         btnFindPath.setOnClickListener(this);
         getDeviceLocation();
-
+        Log.d(TAG, "onCreateView: RUNNING");
         //sensor pedometer
         //count = view.findViewById(R.id.stepText);
         manager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
@@ -359,7 +358,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                                         mLastKnownLocation.getLongitude(), destinationPoint.get(i).latitude,
                                         destinationPoint.get(i).longitude, results);
 
-                                if(results[0] < closest && !isVisited.get(i)){
+                                if(results[0] < closest){
 
                                     closest = results[0];
                                     closeLatLng = (destinationPoint.get(i));
@@ -404,6 +403,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     }
 
     private void sendRequest() {
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        String dormDefault = "none";
+        geoStr = sharedPref.getString("isVisited", dormDefault);
+        Log.d(TAG, "sendRequest: " + geoStr);
         double origLat = currLatLng.latitude;
         double origLong = currLatLng.longitude;
         double destLat = destLatLng.latitude;
@@ -628,47 +631,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         // add the geofences to be monitered by geofencing services.
         builder.addGeofences(geofenceList);
         assert (geofenceList != null);
-        //Log.d(TAG, geofenceList.get(0).toString() + " from getGeoFencingRequest");
-        geoStr = geofenceList.get(0).getRequestId();
-        Toast.makeText(getActivity(), geoStr, Toast.LENGTH_LONG).show();
         // build and return the request
         return builder.build();
     }
 
     private PendingIntent getGeofencingPendingIntent() {
-        try {
-            // FileReader reads text files in the default encoding.
-            FileReader fileReader =
-                    new FileReader(geoStrFile);
-
-            // Always wrap FileReader in BufferedReader.
-            BufferedReader bufferedReader =
-                    new BufferedReader(fileReader);
-
-            while((geoStr = bufferedReader.readLine()) != null) {
-                System.out.println(geoStr);
-            }
-
-            // Always close files.
-            bufferedReader.close();
-        }
-        catch(FileNotFoundException ex) {
-            System.out.println(
-                    "Unable to open file '" +
-                            geoStrFile + "'");
-        }
-        catch(IOException ex) {
-            System.out.println(
-                    "Error reading file '"
-                            + geoStrFile + "'");
-            // Or we could just do this:
-            // ex.printStackTrace();
-        }
-        for(int i = 0; i < isVisited.size(); i++) {
-            if (geoStr.equals(values[i])) {
-                isVisited.set(i, true);
-            }
-        }
         // reuse old intent if it exists
         if (pendingIntent != null) {
             return pendingIntent;

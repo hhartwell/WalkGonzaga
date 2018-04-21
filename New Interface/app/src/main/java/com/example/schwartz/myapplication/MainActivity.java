@@ -5,6 +5,7 @@ package com.example.schwartz.myapplication;
  */
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
@@ -16,13 +17,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.Geofence;
 import com.google.android.gms.location.GeofencingClient;
 import com.google.android.gms.location.LocationServices;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,7 +30,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity  {
 
     final private String TAG = "MAINACTIVITY: ";
-
+    private String isVisited;
     /**
      * Listener for the bottom navigation
      */
@@ -91,7 +89,14 @@ public class MainActivity extends AppCompatActivity  {
             return false;
         }
     };
+    public boolean storeString(String stringName, Context mContext) {
 
+        SharedPreferences prefs = mContext.getSharedPreferences("preferencename", 0);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("isVisited", isVisited);
+
+        return editor.commit();
+    }
     /**
      * Creates actions for this Activity
      * @param savedInstanceState
@@ -100,7 +105,9 @@ public class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        isVisited = "";
 
+      storeString("isVisited", this);
         /**
          * Initiates bottom navigation
          */
@@ -143,7 +150,7 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        String[] values = new String[]{"Crosby", "Dani's House", "Alliance House", "Campion House", "Catherine Monica Hall",
+        String[] values = new String[]{"Library", "Alliance House", "Campion House", "Catherine Monica Hall",
                 "Crimont Hall", "Desmet Hall", "Madonna Hall", "Rebmann",
                 "Robinson", "Welch Hall"};
         List<String> vals = Arrays.asList(values);

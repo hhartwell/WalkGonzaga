@@ -8,13 +8,16 @@ import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
 
+import android.content.SharedPreferences;
 import android.os.Vibrator;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.location.Geofence;
+import com.google.android.gms.location.GeofencingClient;
 import com.google.android.gms.location.GeofencingEvent;
+import com.google.android.gms.location.LocationServices;
 
 
 import java.io.BufferedWriter;
@@ -22,6 +25,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -66,15 +70,27 @@ public class GeoFenceHelperService extends IntentService {
 
             Toast.makeText(this, "Geofence triggered", Toast.LENGTH_SHORT).show();
 
-            //Log.d(TAG, triggeredFences.get(0).getRequestId() + " has been triggered");
-
             Log.d(TAG, "onHandleIntent: " + geofencingEvent.getTriggeringGeofences().get(0).getRequestId());
             String dormVisited = geofencingEvent.getTriggeringGeofences().get(0).getRequestId();
             Intent i = new Intent(this, ARCameraActivity.class);
             i.putExtra("dormVisited", dormVisited);
+            SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("isVisited",Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString("isVisited", dormVisited);
+            editor.commit();
             Log.d(TAG, ("key: " + dormVisited));
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
             Log.d(TAG, i.toString());
+            List<Geofence> triggeredFences = geofencingEvent.getTriggeringGeofences();
+            List<String> fenceStr = new ArrayList<>();
+            GeofencingClient geofencingClient = LocationServices.getGeofencingClient(this);
+            for(int j = 0; j < triggeredFences.size(); j++) {
+                fenceStr.add(triggeredFences.get(j).getRequestId());
+
+
+            }
+            geofencingClient.removeGeofences(fenceStr);
             startActivity(i);
         } else {
             Log.e(TAG, "ERROR IN ONHANDLEINTENT");
@@ -83,30 +99,7 @@ public class GeoFenceHelperService extends IntentService {
              * Gets the geofences that were triggered
              */
             List<Geofence> triggeredFences = geofencingEvent.getTriggeringGeofences();
-            geoStr = triggeredFences.get(0).getRequestId();
-            Log.d(TAG, geoStr);
-//            try {
-//                // Assume default encoding.
-//                FileWriter fileWriter =
-//                        new FileWriter(geoStrFile);
-//
-//                // Always wrap FileWriter in BufferedWriter.
-//                BufferedWriter bufferedWriter =
-//                        new BufferedWriter(fileWriter);
-//
-//                // Note that write() does not automatically
-//                // append a newline character.
-//                bufferedWriter.write(geoStr);
-//                // Always close files.
-//                bufferedWriter.close();
-//            }
-//            catch(IOException ex) {
-//                System.out.println(
-//                        "Error writing to file '"
-//                                + geoStrFile + "'");
-//                // Or we could just do this:
-//                // ex.printStackTrace();
-//            }
+
         }
 
 //            Intent i = new Intent(this, ARCameraActivity.class);
