@@ -542,6 +542,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
     }
     private void CreateGeofenceToComplete() {
+        //TODO shared preferences will probably persist for as long as the app exists. it needs to be reset when app is closed
+        SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+        String dormDefault = "none";
+        String dormVisited = sharedPreferences.getString("isVisited", dormDefault);
+        if (dormVisited != dormDefault){
+            Log.d(TAG, "CreateGeofenceToComplete: GEOFENCES ALREADY EXIST");
+            return;
+        }
         //create the geofence list
         geofenceList = new ArrayList<>();
         Toast.makeText(this.getActivity(), "from create geofence", Toast.LENGTH_SHORT).show();
