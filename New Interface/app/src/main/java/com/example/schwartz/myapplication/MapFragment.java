@@ -172,9 +172,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
         Button btnFindNearest = view.findViewById(R.id.btnFindNearest);
         btnFindNearest.setOnClickListener(this);
-        Button btnFindPath = view.findViewById(R.id.btnFindPath);
-        btnFindPath.setOnClickListener(this);
-        getDeviceLocation();
         Log.d(TAG, "onCreateView: RUNNING");
         //sensor pedometer
         //count = view.findViewById(R.id.stepText);
@@ -280,10 +277,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
             case R.id.btnFindNearest:
                 destLatLng = destinationPoint.get(valueIndex);//closeLatLng;
-                sendRequest();
-                break;
-
-            case R.id.btnFindPath:
                 sendRequest();
                 break;
             case R.id.numberPicker:
@@ -447,7 +440,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         for (Route route : routes) {
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(route.startLocation, 18));
 
-            ((TextView) Objects.requireNonNull(getView()).findViewById(R.id.tvDistance)).setText(route.distance.text);
 
 
 
