@@ -93,7 +93,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private void numberPickerDialog()
     {
         NumberPicker myNumberPicker = new NumberPicker(getActivity());
-        final String[] values= {"Residence Hall", "Tour 2", "Tour 3", "Tour 4", "Tour 5"};
+        final String[] values= {"Select a Tour", "Residence Hall", "Tour 2", "Tour 3", "Tour 4", "Tour 5"};
         myNumberPicker.setMaxValue(values.length-1);
         myNumberPicker.setMinValue(0);
         myNumberPicker.setDisplayedValues(values);
@@ -109,7 +109,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                     fragment = new HomeFragment();
                     loadFragment(fragment);
                 }
-//                number.setText(values[newVal]);
             }
         };
         myNumberPicker.setOnValueChangedListener(myValChangedListener);
@@ -119,7 +118,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
             }
         });
 

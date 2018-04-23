@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity  {
                     return true;
 
                 /**
+
                  * Tours Button/Map
                  */
 //                case R.id.navigation_tours:
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity  {
 //                    return true;
 
                 /**
+
                  * Visited Button
                  */
                 case R.id.navigation_gallery:
