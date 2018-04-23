@@ -55,6 +55,14 @@ public class MainActivity extends AppCompatActivity  {
                     return true;
 
                 /**
+                 * Tours Button/Map
+                 */
+                case R.id.navigation_tours:
+                    fragment = new ToursFragment();
+                    loadFragment(fragment);
+                    return true;
+
+                /**
                  * Visited Button
                  */
                 case R.id.navigation_gallery:
@@ -142,12 +150,13 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        String[] values = new String[]{"Library", "Alliance House", "Campion House", "Catherine Monica Hall",
+        String[] values = new String[]{"Dani's House", "Alliance House", "Campion House", "Catherine Monica Hall",
                 "Crimont Hall", "Desmet Hall", "Madonna Hall", "Rebmann",
                 "Robinson", "Welch Hall"};
         List<String> vals = Arrays.asList(values);
         GeofencingClient geofencingClient = LocationServices.getGeofencingClient(this);
         geofencingClient.removeGeofences(vals);
+        getApplicationContext().getSharedPreferences("isVisited", 0).edit().clear().commit();//clear shared preferences when app closes
     }
 
     /**
