@@ -9,12 +9,6 @@
         app:showAsAction="always|withText" />
 
     <item
-        android:id="@+id/navigation_tours"
-        android:icon="@drawable/map"
-        android:title="@string/title_tours"
-        app:showAsAction="always|withText"/>
-
-    <item
         android:id="@+id/navigation_gallery"
         android:icon="@drawable/gallery"
         android:title="@string/title_gallery"
