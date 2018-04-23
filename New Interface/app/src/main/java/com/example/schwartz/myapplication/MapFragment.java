@@ -121,10 +121,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     private Geofence geofence;
     private PendingIntent pendingIntent;
     private ArrayList<Geofence> geofenceList;
-    private String[] values = new String[]{"Library", "Alliance House", "Campion House", "Catherine Monica Hall",
+    private String[] values = new String[]{"Dani's House", "Alliance House", "Campion House", "Catherine Monica Hall",
             "Crimont Hall", "Desmet Hall", "Madonna Hall", "Rebmann",
             "Robinson", "Welch Hall"};
-
+    private String dormDefault = "none";
+    private int valueIndex; // needed to see which dorms have been visited
     // number picker variables
     Button numberPicker;
     SupportMapFragment mapFragment;
@@ -147,8 +148,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         Log.d(TAG, "onCreate: RUNNING");
         destinationPoint = new ArrayList<>();
         //destinationPoint.add(new LatLng(47.667246,-117.401390)); // crosby
-        //destinationPoint.add(new LatLng(47.655256, -117.463520));//Dani's house
-        destinationPoint.add(new LatLng(47.666480, -117.400895));//Library
+        destinationPoint.add(new LatLng(47.655256, -117.463520));//Dani's house
+        //destinationPoint.add(new LatLng(47.666480, -117.400895));//Library
         destinationPoint.add(new LatLng(47.668670, -117.400111));//Alliance
         destinationPoint.add(new LatLng(47.668663, -117.401090));//Campion
         destinationPoint.add(new LatLng(47.665921, -117.397811));//Catherine/Monica
@@ -171,9 +172,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
         Button btnFindNearest = view.findViewById(R.id.btnFindNearest);
         btnFindNearest.setOnClickListener(this);
-//        Button btnFindPath = view.findViewById(R.id.btnFindPath);
-//        btnFindPath.setOnClickListener(this);
-//        getDeviceLocation();
+        Button btnFindPath = view.findViewById(R.id.btnFindPath);
+        btnFindPath.setOnClickListener(this);
+        getDeviceLocation();
         Log.d(TAG, "onCreateView: RUNNING");
         //sensor pedometer
         //count = view.findViewById(R.id.stepText);
@@ -274,11 +275,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     }
     @Override
     public void onClick(View v) {
-
+        getValueIndex();
         switch (v.getId()) {
 
             case R.id.btnFindNearest:
-                destLatLng = closeLatLng;
+                destLatLng = destinationPoint.get(valueIndex);//closeLatLng;
+                sendRequest();
+                break;
+
+            case R.id.btnFindPath:
                 sendRequest();
                 break;
             case R.id.numberPicker:
@@ -290,6 +295,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     }
     private void numberPickerDialog()
     {
+        getValueIndex();
         NumberPicker myNumberPicker = new NumberPicker(getActivity());
         myNumberPicker.setMaxValue(values.length-1);
         myNumberPicker.setMinValue(0);
@@ -300,9 +306,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                 numberPicker.setText(values[newVal]);
                 // this is where we update the map
-                destLatLng = destinationPoint.get(newVal);
+                //destLatLng = destinationPoint.get(newVal);
+                destLatLng = destinationPoint.get(valueIndex);
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(destLatLng, 18));
-                originMarkers.add(mMap.addMarker(new MarkerOptions().title(values[newVal]).position(destLatLng)));
+                originMarkers.add(mMap.addMarker(new MarkerOptions().title(values[valueIndex]).position(destLatLng)));
                 //Log.d(TAG, "onItemSelected: type" + values[newVal] + " Coordinates: " + destinationPoint.get(newVal).toString());
             }
         };
@@ -313,7 +320,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                sendRequest();
+
             }
         });
 
@@ -399,10 +406,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     }
 
     private void sendRequest() {
-        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        String dormDefault = "none";
-        geoStr = sharedPref.getString("isVisited", dormDefault);
-        Log.d(TAG, "sendRequest: " + geoStr);
         double origLat = currLatLng.latitude;
         double origLong = currLatLng.longitude;
         double destLat = destLatLng.latitude;
@@ -443,6 +446,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
         for (Route route : routes) {
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(route.startLocation, 18));
+
+            ((TextView) Objects.requireNonNull(getView()).findViewById(R.id.tvDistance)).setText(route.distance.text);
+
+
 
             PolylineOptions polylineOptions = new PolylineOptions().
                     geodesic(true).
@@ -533,15 +540,30 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,15));
 
     }
-    private void CreateGeofenceToComplete() {
-        //TODO shared preferences will probably persist for as long as the app exists. it needs to be reset when app is closed
+    private String isVisitedPreferences(){
+
         SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
-        String dormDefault = "none";
+
         String dormVisited = sharedPreferences.getString("isVisited", dormDefault);
-        if (dormVisited != dormDefault){
+        return dormVisited;
+
+    }
+    private int getValueIndex(){
+        for(int i = 0; i < values.length; i++){
+            if(isVisitedPreferences().equals(values[i])){
+                valueIndex = i;
+            }
+        }
+        valueIndex+=1; // set index to next dorm that hasn't been visited
+        return valueIndex;
+    }
+    private void CreateGeofenceToComplete() {
+
+        if (isVisitedPreferences() != dormDefault){
             Log.d(TAG, "CreateGeofenceToComplete: GEOFENCES ALREADY EXIST");
             return;
         }
+        getValueIndex();
         //create the geofence list
         geofenceList = new ArrayList<>();
         Toast.makeText(this.getActivity(), "from create geofence", Toast.LENGTH_SHORT).show();
@@ -559,7 +581,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         // build the geofence
         // this uses a builder to assign all attributes.
         // the builder is a lot like a layout manager
-        for(int i = 0; i < values.length; i++){
+        for(int i = valueIndex; i < values.length; i++){
             geofence = new Geofence.Builder()
                     // string used to refer to the geo fence
                     .setRequestId(values[i])
