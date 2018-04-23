@@ -444,10 +444,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         for (Route route : routes) {
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(route.startLocation, 18));
 
-            ((TextView) Objects.requireNonNull(getView()).findViewById(R.id.tvDistance)).setText(route.distance.text);
-
-
-
             PolylineOptions polylineOptions = new PolylineOptions().
                     geodesic(true).
                     color(Color.BLUE).

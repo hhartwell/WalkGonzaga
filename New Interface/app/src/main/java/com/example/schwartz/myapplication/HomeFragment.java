@@ -63,7 +63,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        number = (TextView) view.findViewById(R.id.number);
+//        number = (TextView) view.findViewById(R.id.number);
         numberPicker = (Button) view.findViewById (R.id.numberPicker);
         numberPicker.setOnClickListener(this);
         return view;
@@ -109,7 +109,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                     fragment = new HomeFragment();
                     loadFragment(fragment);
                 }
-                number.setText(values[newVal]);
+//                number.setText(values[newVal]);
             }
         };
         myNumberPicker.setOnValueChangedListener(myValChangedListener);

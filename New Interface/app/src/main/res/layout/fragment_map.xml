@@ -51,30 +51,6 @@
             <!--/>-->
         </GridLayout>
 
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#C1C6C8"
-            android:columnCount="2"
-            android:layout_row="0">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_distance" />
-
-            <TextView
-                android:id="@+id/tvDistance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="2dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/raleway"
-                android:text="0 km" />
-        </GridLayout>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
@@ -86,4 +62,5 @@
             app:srcCompat="@drawable/book" />
 
     </GridLayout>
+
 </FrameLayout>

@@ -7,18 +7,16 @@
 
     <Button
         android:id="@+id/numberPicker"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:background="@android:color/transparent" />
-
-    <TextView
-        android:id="@+id/number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/numberPicker"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="99dp"
-        android:text="" />
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="#C8102E"
+        android:gravity="center_vertical|center_horizontal|center"
+        android:text="START"
+        android:fontFamily="@font/raleway"
+        android:textColor="#C1C6C8"/>
+
 </FrameLayout>
