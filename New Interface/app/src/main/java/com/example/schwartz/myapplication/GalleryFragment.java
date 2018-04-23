@@ -1,7 +1,9 @@
 package com.example.schwartz.myapplication;
 
+import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 
 import java.util.ArrayList;
@@ -35,10 +37,10 @@ import java.util.concurrent.ExecutionException;
 /**
  * Fragment class that displays the images for the gallery screen.
  */
-public class GalleryFragment extends Fragment {
+public class GalleryFragment extends Fragment implements View.OnClickListener{
 
     final private String TAG = "GALLERYFRAGMENT";
-
+    static String staticDormVisited;
     /**
      * Empty Constructor
      */
@@ -78,6 +80,10 @@ public class GalleryFragment extends Fragment {
                 }
                 assignOnClickListeners(imageButtons, getActivity().getIntent().getExtras().getString("dormVisited"));
                 // remove the dormVisited field from the intent so that it wont crash when the fragment is started again.
+
+                FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.back_to_map_button);
+                fab.setOnClickListener(this);
+
                 getActivity().getIntent().removeExtra("dormVisited");
                 return rootView;
             }
@@ -92,7 +98,18 @@ public class GalleryFragment extends Fragment {
             return rootView;
         }
     }
-
+    private String getExtraFromIntent(String key){
+        Log.d(TAG, "getExtraFromIntent: " + getActivity().getIntent().getStringExtra(key));
+        return getActivity().getIntent().getStringExtra(key);
+    }
+    @Override
+    public void onClick(View v) {
+        MapFragment mFrag = new MapFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("dormVisited", getExtraFromIntent("dormVisited"));
+        mFrag.setArguments(bundle);
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, mFrag).commit();
+    }
     /**
      * helper function used to set up the initial buttons if user is not currently taking a tour
      */
@@ -138,6 +155,7 @@ public class GalleryFragment extends Fragment {
         ScrollView scrollView = (ScrollView) rootView.findViewById(R.id.scroll_view);
         TextView textView = (TextView) rootView.findViewById(R.id.textView);
         GridLayout gridLayout = (GridLayout) rootView.findViewById(R.id.grid_layout);
+        FrameLayout frameLayout = (FrameLayout) rootView.findViewById(R.id.frame_layout);
 
         // remove the text view and gridlayout
         ((ViewGroup) textView.getParent()).removeView(textView);
@@ -150,10 +168,12 @@ public class GalleryFragment extends Fragment {
         newGridLayout.setOrientation(GridLayout.HORIZONTAL);
 
         // format the existing scroll view to fill the whole screen
-        scrollView.addView(newGridLayout);
         ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) scrollView.getLayoutParams();
-        p.setMargins(0, 0, 0, 0);
+        p.setMargins(0, 100, 0, 0);
+
+
         scrollView.setLayoutParams(p);
+        frameLayout.addView(newGridLayout);
 
         // return the new gridlayout where images can be placed
         return newGridLayout;
@@ -245,4 +265,6 @@ public class GalleryFragment extends Fragment {
         }
         return newDrawables;
     }
+
+
 }

@@ -57,10 +57,10 @@ public class MainActivity extends AppCompatActivity  {
                 /**
                  * Tours Button/Map
                  */
-                case R.id.navigation_tours:
-                    fragment = new ToursFragment();
-                    loadFragment(fragment);
-                    return true;
+//                case R.id.navigation_tours:
+//                    fragment = new ToursFragment();
+//                    loadFragment(fragment);
+//                    return true;
 
                 /**
                  * Visited Button

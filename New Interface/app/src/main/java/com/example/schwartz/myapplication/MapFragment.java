@@ -148,8 +148,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         Log.d(TAG, "onCreate: RUNNING");
         destinationPoint = new ArrayList<>();
         //destinationPoint.add(new LatLng(47.667246,-117.401390)); // crosby
-        destinationPoint.add(new LatLng(47.655256, -117.463520));//Dani's house
-        //destinationPoint.add(new LatLng(47.666480, -117.400895));//Library
+        //destinationPoint.add(new LatLng(47.655256, -117.463520));//Dani's house
+        destinationPoint.add(new LatLng(47.666384, -117.401010));//Library
         destinationPoint.add(new LatLng(47.668670, -117.400111));//Alliance
         destinationPoint.add(new LatLng(47.668663, -117.401090));//Campion
         destinationPoint.add(new LatLng(47.665921, -117.397811));//Catherine/Monica
@@ -172,8 +172,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
         Button btnFindNearest = view.findViewById(R.id.btnFindNearest);
         btnFindNearest.setOnClickListener(this);
-        Button btnFindPath = view.findViewById(R.id.btnFindPath);
-        btnFindPath.setOnClickListener(this);
+//        Button btnFindPath = view.findViewById(R.id.btnFindPath);
+//        btnFindPath.setOnClickListener(this);
         getDeviceLocation();
         Log.d(TAG, "onCreateView: RUNNING");
         //sensor pedometer
@@ -283,9 +283,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                 sendRequest();
                 break;
 
-            case R.id.btnFindPath:
-                sendRequest();
-                break;
+//            case R.id.btnFindPath:
+//                sendRequest();
+//                break;
             case R.id.numberPicker:
                 numberPickerDialog();
 
@@ -447,7 +447,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         for (Route route : routes) {
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(route.startLocation, 18));
 
-            ((TextView) Objects.requireNonNull(getView()).findViewById(R.id.tvDistance)).setText(route.distance.text);
+            //((TextView) Objects.requireNonNull(getView()).findViewById(R.id.tvDistance)).setText(route.distance.text);
 
 
 
@@ -552,9 +552,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         for(int i = 0; i < values.length; i++){
             if(isVisitedPreferences().equals(values[i])){
                 valueIndex = i;
+                valueIndex+=1;   // set index to next dorm that hasn't been visited
+            }
+            else{
+                valueIndex = 0;
             }
         }
-        valueIndex+=1; // set index to next dorm that hasn't been visited
+
         return valueIndex;
     }
     private void CreateGeofenceToComplete() {
@@ -718,4 +722,3 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         Log.d(TAG, "ONRESUME");
     }
 }
-
