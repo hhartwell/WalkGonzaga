@@ -171,9 +171,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
         Button btnFindNearest = view.findViewById(R.id.btnFindNearest);
         btnFindNearest.setOnClickListener(this);
-        Button btnFindPath = view.findViewById(R.id.btnFindPath);
-        btnFindPath.setOnClickListener(this);
-        getDeviceLocation();
+//        Button btnFindPath = view.findViewById(R.id.btnFindPath);
+//        btnFindPath.setOnClickListener(this);
+//        getDeviceLocation();
         Log.d(TAG, "onCreateView: RUNNING");
         //sensor pedometer
         //count = view.findViewById(R.id.stepText);
@@ -281,10 +281,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                 destLatLng = closeLatLng;
                 sendRequest();
                 break;
-
-            case R.id.btnFindPath:
-                sendRequest();
-                break;
             case R.id.numberPicker:
                 numberPickerDialog();
 
@@ -317,7 +313,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                sendRequest();
             }
         });
 

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-         />
+        />
 
     <GridLayout
         android:layout_width="match_parent"
@@ -22,19 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#C1C6C8"
-            android:columnCount="3">
+            android:columnCount="1">
 
-            <!--<Spinner-->
-            <!--android:id="@+id/spinner"-->
-            <!--android:layout_width="150dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_margin="5dp"-->
-            <!--android:background="@color/gradient_end"-->
-            <!--android:textColor="@color/white" />-->
-            <!--<ExpandableListView-->
-            <!--android:id="@+id/expandableLV"-->
-            <!--android:layout_width="150dp"-->
-            <!--android:layout_height="wrap_content"-->
             <Button
                 android:id="@+id/numberPicker"
                 android:layout_width="match_parent"
@@ -46,46 +35,9 @@
                 android:text="Pick A Residence Hall"
                 android:textColor="#C1C6C8" />
 
-
-            <!--/>-->
-        </GridLayout>
-
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#C1C6C8"
-            android:columnCount="6">
-
-
-            <Button
-                android:id="@+id/btnFindPath"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="#041E42"
-                android:fontFamily="@font/raleway"
-                android:padding="10dp"
-                android:text="find Selected"
-                android:textColor="#C1C6C8" />
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_distance" />
-
-            <TextView
-                android:id="@+id/tvDistance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/raleway"
-                android:text="0 km" />
-
             <Button
                 android:id="@+id/btnFindNearest"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:background="#C8102E"
@@ -96,8 +48,33 @@
                 android:textColor="#C1C6C8" />
 
 
+            <!--/>-->
         </GridLayout>
 
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#C1C6C8"
+            android:columnCount="2"
+            android:layout_row="0">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_distance" />
+
+            <TextView
+                android:id="@+id/tvDistance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/raleway"
+                android:text="0 km" />
+        </GridLayout>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
@@ -109,5 +86,4 @@
             app:srcCompat="@drawable/book" />
 
     </GridLayout>
-
 </FrameLayout>
