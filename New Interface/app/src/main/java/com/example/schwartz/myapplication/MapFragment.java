@@ -581,17 +581,22 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
      */
     private int getValueIndex(){
         String key = "dormVisited";
-        Log.d(TAG, "isVisitedPreferencesReturns: " + isVisitedPreferences(key));
-        Log.d(TAG, "values[0] returns " + values[0]);
+        //Log.d(TAG, "isVisitedPreferencesReturns: " + isVisitedPreferences(key));
+        //Log.d(TAG, "values[0] returns " + values[0]);
+//        if(isVisitedPreferences(key).equals(values[0])){
+////            Log.d(TAG, "getValueIndex: preferences == values");
+////        }
         for(int i = 0; i < values.length; i++){
+            //Log.d(TAG, "Preferences are: "  + isVisitedPreferences(key) + "values are: " + values[i] + "i is: " + i);
             if(isVisitedPreferences(key).equals(values[i])){
                 valueIndex = i;  // get index of last dorm visited
                 valueIndex+=1;   // set index to next dorm that hasn't been visited
                 Log.d(TAG, "getValueIndex: preferences == values");
+                break;
             }
             else{
                 valueIndex = 0;
-                Log.d(TAG, "getValueIndex: preferences !equals values");
+                //Log.d(TAG, "getValueIndex: preferences !equals values");
             }
         }
         Log.d(TAG, "getValueIndex: " + valueIndex);

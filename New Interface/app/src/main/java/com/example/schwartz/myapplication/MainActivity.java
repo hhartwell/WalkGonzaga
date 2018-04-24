@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
@@ -158,7 +159,12 @@ public class MainActivity extends AppCompatActivity  {
         List<String> vals = Arrays.asList(values);
         GeofencingClient geofencingClient = LocationServices.getGeofencingClient(this);
         geofencingClient.removeGeofences(vals);
-        getApplicationContext().getSharedPreferences("isVisited", 0).edit().clear().apply();//clear shared preferences when app closes
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+
+
     }
 
     /**
