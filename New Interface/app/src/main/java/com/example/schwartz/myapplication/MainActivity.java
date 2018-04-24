@@ -31,7 +31,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity  {
 
     final private String TAG = "MAINACTIVITY: ";
-    //private String isVisited;
+
     /**
      * Listener for the bottom navigation
      */
@@ -92,14 +92,7 @@ public class MainActivity extends AppCompatActivity  {
             return false;
         }
     };
-//    public boolean storeString(String stringName, Context mContext) {
-//
-//        SharedPreferences prefs = mContext.getSharedPreferences("preferencename", 0);
-//        SharedPreferences.Editor editor = prefs.edit();
-//        editor.putString("isVisited", isVisited);
-//
-//        return editor.commit();
-//    }
+
     /**
      * Creates actions for this Activity
      * @param savedInstanceState
@@ -108,9 +101,9 @@ public class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //isVisited = "";
 
-      //storeString("isVisited", this);
+
+
         /**
          * Initiates bottom navigation
          */
@@ -153,17 +146,16 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        String[] values = new String[]{"Dani's House", "Alliance House", "Campion House", "Catherine Monica Hall",
-                "Crimont Hall", "Desmet Hall", "Madonna Hall", "Rebmann",
-                "Robinson", "Welch Hall"};
+        String[] values = new String[]{"Desmet Hall", "Welch Hall", "Crimont Hall", "Madonna Hall",
+                "Catherine Monica Hall", "Campion House", "Alliance House", "Robinson", "Rebmann"};
         List<String> vals = Arrays.asList(values);
         GeofencingClient geofencingClient = LocationServices.getGeofencingClient(this);
         geofencingClient.removeGeofences(vals);
+
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();
-
 
     }
 

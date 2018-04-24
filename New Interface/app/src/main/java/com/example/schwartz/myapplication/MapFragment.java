@@ -122,9 +122,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     private Geofence geofence;
     private PendingIntent pendingIntent;
     private ArrayList<Geofence> geofenceList;
-    private String[] values = new String[]{"Dani's House", "Alliance House", "Campion House", "Catherine Monica Hall",
-            "Crimont Hall", "Desmet Hall", "Madonna Hall", "Rebmann",
-            "Robinson", "Welch Hall"};
+    private String[] values = new String[]{"Dani's House", "1.Desmet Hall", "2.Welch Hall", "3.Crimont Hall", "4.Madonna Hall",
+            "5.Catherine Monica Hall", "6.Campion House", "7.Alliance House", "8.Robinson", "9.Rebmann"};//MUST MAINTAIN THIS ORDER!
     private String dormDefault = "none";
     private int valueIndex; // needed to see which dorms have been visited
     // number picker variables
@@ -152,15 +151,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         destinationPoint.add(new LatLng(47.655164, -117.463540));//Dani's house
         //destinationPoint.add(new LatLng(47.666384, -117.401010));//Library
         //destinationPoint.add(new LatLng(47.667132, -117.399772));//Hemmingson
-        destinationPoint.add(new LatLng(47.668670, -117.400111));//Alliance
-        destinationPoint.add(new LatLng(47.668663, -117.401090));//Campion
-        destinationPoint.add(new LatLng(47.665921, -117.397811));//Catherine/Monica
-        destinationPoint.add(new LatLng(47.670186, -117.401682));//Crimont
         destinationPoint.add(new LatLng(47.667834, -117.401336));//DeSmet
+        destinationPoint.add(new LatLng(47.667649, -117.400308));//Welch
+        destinationPoint.add(new LatLng(47.670186, -117.401682));//Crimont
         destinationPoint.add(new LatLng(47.666774, -117.397601));//Madonna
-        destinationPoint.add(new LatLng(47.668509, -117.404707));//Rebmann
+        destinationPoint.add(new LatLng(47.665921, -117.397811));//Catherine/Monica
+        destinationPoint.add(new LatLng(47.668663, -117.401090));//Campion
+        destinationPoint.add(new LatLng(47.668670, -117.400111));//Alliance
         destinationPoint.add(new LatLng(47.668507, -117.404350));//Robinson
-        destinationPoint.add(new LatLng(47.667649, -117.400308));//Welsh
+        destinationPoint.add(new LatLng(47.668509, -117.404707));//Rebmann
+
+
         super.onCreate(savedInstanceState);
 
     }
@@ -226,35 +227,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        //Log.d(TAG, "onMapReady: ");
-        /*
-        //if we are keeping these markers, convert them to a for loop
-        mMap.addMarker(new MarkerOptions().position(new LatLng(47.668670, -117.400111))
-                .title("Alliance"));
-        mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(47.668663, -117.401090))
-                .title("Campion"));
-        mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(47.665921, -117.397811))
-                .title("Catherine Monica"));
-        mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(47.670186, -117.401682))
-                .title("Crimont"));
-        mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(47.667834, -117.401336))
-                .title("Desmet"));
-        mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(47.666774, -117.397601))
-                .title("Madonna"));
-        mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(47.668509, -117.404707))
-                .title("Rebmann"));
-        mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(47.668507, -117.404350))
-                .title("Robinson"));
-        mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(47.667649, -117.400308))
-                .title("Welch"));*/
+
+        //create markers of historical points
+        for(int i = 0; i < values.length; i++){
+            mMap.addMarker(new MarkerOptions().position(destinationPoint.get(i))
+                    .title(values[i]));
+        }
+
         getLocationPermission();
         // Turn on the My Location layer and the related control on the map.
         updateLocationUI();

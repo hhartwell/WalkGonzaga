@@ -32,7 +32,7 @@
                 android:background="#041E42"
                 android:fontFamily="@font/raleway"
                 android:padding="10dp"
-                android:text="Pick A Residence Hall"
+                android:text=""
                 android:textColor="#C1C6C8" />
 
             <Button
@@ -44,7 +44,7 @@
                 android:fontFamily="@font/raleway"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="Find Nearest Tour"
+                android:text="Let's Go!"
                 android:textColor="#C1C6C8" />
 
 

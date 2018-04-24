@@ -64,8 +64,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 //        number = (TextView) view.findViewById(R.id.number);
-        numberPicker = (Button) view.findViewById (R.id.numberPicker);
-        numberPicker.setOnClickListener(this);
+//        numberPicker = (Button) view.findViewById (R.id.numberPicker);
+//        numberPicker.setOnClickListener(this);
+        Button startBtn = view.findViewById(R.id.startBtn);
+        startBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragment = new MapFragment();
+                loadFragment(fragment);
+            }
+        });
         return view;
     }
 
@@ -92,42 +100,43 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
     private void numberPickerDialog()
     {
-        NumberPicker myNumberPicker = new NumberPicker(getActivity());
-        final String[] values= {"Select a Tour", "Residence Hall", "Tour 2", "Tour 3", "Tour 4", "Tour 5"};
-        myNumberPicker.setMaxValue(values.length-1);
-        myNumberPicker.setMinValue(0);
-        myNumberPicker.setDisplayedValues(values);
-        myNumberPicker.setWrapSelectorWheel(true);
-        NumberPicker.OnValueChangeListener myValChangedListener = new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                if(values[newVal] == "Residence Hall")
-                {
-                    fragment = new MapFragment();
-                    loadFragment(fragment);
-                } else {
-                    fragment = new HomeFragment();
-                    loadFragment(fragment);
-                }
-            }
-        };
-        myNumberPicker.setOnValueChangedListener(myValChangedListener);
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity()).setView(myNumberPicker);
-        builder.setTitle("Please Select A Tour:");
 
-        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        });
-
-        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
-        builder.show();
+//        NumberPicker myNumberPicker = new NumberPicker(getActivity());
+//        final String[] values= {"Select a Tour", "Residence Hall"};
+//        myNumberPicker.setMaxValue(values.length-1);
+//        myNumberPicker.setMinValue(0);
+//        myNumberPicker.setDisplayedValues(values);
+//        myNumberPicker.setWrapSelectorWheel(true);
+//        NumberPicker.OnValueChangeListener myValChangedListener = new NumberPicker.OnValueChangeListener() {
+//            @Override
+//            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+//                if(values[newVal] == "Residence Hall")
+//                {
+//                    fragment = new MapFragment();
+//                    loadFragment(fragment);
+//                } else {
+//                    fragment = new HomeFragment();
+//                    loadFragment(fragment);
+//                }
+//            }
+//        };
+//        myNumberPicker.setOnValueChangedListener(myValChangedListener);
+//        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity()).setView(myNumberPicker);
+//        builder.setTitle("Please Select A Tour:");
+//
+//        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//            }
+//        });
+//
+//        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//
+//            }
+//        });
+//        builder.show();
     }
 
 
