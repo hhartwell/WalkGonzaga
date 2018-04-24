@@ -4,12 +4,15 @@ package com.example.schwartz.myapplication;
  * Imports
  */
 
+import android.app.Activity;
+import android.app.Application;
 import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
 
 import android.content.SharedPreferences;
 import android.os.Vibrator;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.Toast;
@@ -20,6 +23,8 @@ import com.google.android.gms.location.GeofencingEvent;
 import com.google.android.gms.location.LocationServices;
 
 
+import junit.runner.BaseTestRunner;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -27,6 +32,9 @@ import java.io.IOException;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.app.PendingIntent.getActivity;
+
 
 /**
  * Class that helps with the geofence
@@ -71,14 +79,22 @@ public class GeoFenceHelperService extends IntentService {
             Toast.makeText(this, "Geofence triggered", Toast.LENGTH_SHORT).show();
 
             Log.d(TAG, "onHandleIntent: " + geofencingEvent.getTriggeringGeofences().get(0).getRequestId());
-            String dormVisited = geofencingEvent.getTriggeringGeofences().get(0).getRequestId();
+            String dormVisited  = geofencingEvent.getTriggeringGeofences().get(0).getRequestId();
+            //Log.d(TAG, "Shared Preferences: " + dormVisited);
+
+//            SharedPreferences sharedPref = getSharedPreferences("isVisited",Context.MODE_PRIVATE);
+//            SharedPreferences.Editor editor = sharedPref.edit();
+//            editor.putString("dormVisited", dormVisited);
+//            editor.apply();
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("dormVisited", dormVisited);
+            editor.apply();
+            Log.d(TAG,"GetSharedPreferences " + dormVisited);
+            //getSharedPrefs("dormVisited");
+
             Intent i = new Intent(this, ARCameraActivity.class);
             i.putExtra("dormVisited", dormVisited);
-            SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("isVisited",Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putString("isVisited", dormVisited);
-            editor.commit();
-            Log.d(TAG, ("key: " + dormVisited));
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
             Log.d(TAG, i.toString());
@@ -108,4 +124,6 @@ public class GeoFenceHelperService extends IntentService {
 //            startActivity(i);
 
         }
+
+
 }

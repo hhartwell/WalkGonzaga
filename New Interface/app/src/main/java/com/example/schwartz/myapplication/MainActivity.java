@@ -30,7 +30,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity  {
 
     final private String TAG = "MAINACTIVITY: ";
-    private String isVisited;
+    //private String isVisited;
     /**
      * Listener for the bottom navigation
      */
@@ -91,14 +91,14 @@ public class MainActivity extends AppCompatActivity  {
             return false;
         }
     };
-    public boolean storeString(String stringName, Context mContext) {
-
-        SharedPreferences prefs = mContext.getSharedPreferences("preferencename", 0);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("isVisited", isVisited);
-
-        return editor.commit();
-    }
+//    public boolean storeString(String stringName, Context mContext) {
+//
+//        SharedPreferences prefs = mContext.getSharedPreferences("preferencename", 0);
+//        SharedPreferences.Editor editor = prefs.edit();
+//        editor.putString("isVisited", isVisited);
+//
+//        return editor.commit();
+//    }
     /**
      * Creates actions for this Activity
      * @param savedInstanceState
@@ -107,9 +107,9 @@ public class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        isVisited = "";
+        //isVisited = "";
 
-      storeString("isVisited", this);
+      //storeString("isVisited", this);
         /**
          * Initiates bottom navigation
          */
@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity  {
         List<String> vals = Arrays.asList(values);
         GeofencingClient geofencingClient = LocationServices.getGeofencingClient(this);
         geofencingClient.removeGeofences(vals);
-        getApplicationContext().getSharedPreferences("isVisited", 0).edit().clear().commit();//clear shared preferences when app closes
+        getApplicationContext().getSharedPreferences("isVisited", 0).edit().clear().apply();//clear shared preferences when app closes
     }
 
     /**

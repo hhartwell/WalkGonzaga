@@ -20,6 +20,7 @@ import android.hardware.SensorManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
@@ -148,8 +149,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         Log.d(TAG, "onCreate: RUNNING");
         destinationPoint = new ArrayList<>();
         //destinationPoint.add(new LatLng(47.667246,-117.401390)); // crosby
-        //destinationPoint.add(new LatLng(47.655256, -117.463520));//Dani's house
-        destinationPoint.add(new LatLng(47.666384, -117.401010));//Library
+        destinationPoint.add(new LatLng(47.655164, -117.463540));//Dani's house
+        //destinationPoint.add(new LatLng(47.666384, -117.401010));//Library
+        //destinationPoint.add(new LatLng(47.667132, -117.399772));//Hemmingson
         destinationPoint.add(new LatLng(47.668670, -117.400111));//Alliance
         destinationPoint.add(new LatLng(47.668663, -117.401090));//Campion
         destinationPoint.add(new LatLng(47.665921, -117.397811));//Catherine/Monica
@@ -284,13 +286,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                 destLatLng = destinationPoint.get(valueIndex);//closeLatLng;
                 sendRequest();
                 break;
-<<<<<<< HEAD
+
 
 //            case R.id.btnFindPath:
 //                sendRequest();
 //                break;
-=======
->>>>>>> 80d62fac3f10fc6c9fb55721f8e776adbe262442
+
             case R.id.numberPicker:
                 numberPickerDialog();
 
@@ -359,20 +360,20 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                                             mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
 
                             //get nearest location
-                            for(int i = 0; i < destinationPoint.size(); i++) {
-                                // location and always closest
-                                float[]results = new float[1];
-                                Location.distanceBetween(mLastKnownLocation.getLatitude(),
-                                        mLastKnownLocation.getLongitude(), destinationPoint.get(i).latitude,
-                                        destinationPoint.get(i).longitude, results);
-
-                                if(results[0] < closest){
-
-                                    closest = results[0];
-                                    closeLatLng = (destinationPoint.get(i));
-
-                                }
-                            }
+//                            for(int i = 0; i < destinationPoint.size(); i++) {
+//                                // location and always closest
+//                                float[]results = new float[1];
+//                                Location.distanceBetween(mLastKnownLocation.getLatitude(),
+//                                        mLastKnownLocation.getLongitude(), destinationPoint.get(i).latitude,
+//                                        destinationPoint.get(i).longitude, results);
+//
+//                                if(results[0] < closest){
+//
+//                                    closest = results[0];
+//                                    closeLatLng = (destinationPoint.get(i));
+//
+//                                }
+//                            }
 
                         } else {
 
@@ -452,10 +453,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         for (Route route : routes) {
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(route.startLocation, 18));
 
-<<<<<<< HEAD
-            //((TextView) Objects.requireNonNull(getView()).findViewById(R.id.tvDistance)).setText(route.distance.text);
-=======
->>>>>>> 80d62fac3f10fc6c9fb55721f8e776adbe262442
+
 
 
 
@@ -548,34 +546,59 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,15));
 
     }
-    private String isVisitedPreferences(){
 
-        SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+    /**
+     * This function reads the shared preferences written in the GeoFenceHelperService. It should contain the
+     * name of the last dorm visited.
+     * @return dormVisited is the name of the last dorm visited
+     */
+    private String isVisitedPreferences(String key){
 
-        String dormVisited = sharedPreferences.getString("isVisited", dormDefault);
-        return dormVisited;
+//        SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+//
+//        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+//        //String dormVisited = sharedPreferences.getString("isVisited", dormDefault);
+//        String dormVisited = sharedPrefs.getString("isVisited", "");
+//        Log.d(TAG, "isVisitedPreferences: " + dormVisited);
+//        return dormVisited;
+//
+//    }
+//    private String getSharedPrefs(String key){
+
+
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        //String dormVisited = sharedPreferences.getString("isVisited", dormDefault);
+        String dormVisited = sharedPrefs.getString(key, "");
+        Log.d(TAG, "isVisitedPreferences: " + dormVisited);
+
+            return dormVisited;
 
     }
+    /**
+     * This function gets a string from shared preferences and compares it to the value array
+     * In doing so, it is able to determin which dorm was visited last
+     * @return index of dorm to visit
+     */
     private int getValueIndex(){
+        String key = "dormVisited";
+        Log.d(TAG, "isVisitedPreferencesReturns: " + isVisitedPreferences(key));
+        Log.d(TAG, "values[0] returns " + values[0]);
         for(int i = 0; i < values.length; i++){
-            if(isVisitedPreferences().equals(values[i])){
-                valueIndex = i;
+            if(isVisitedPreferences(key).equals(values[i])){
+                valueIndex = i;  // get index of last dorm visited
                 valueIndex+=1;   // set index to next dorm that hasn't been visited
+                Log.d(TAG, "getValueIndex: preferences == values");
             }
             else{
                 valueIndex = 0;
+                Log.d(TAG, "getValueIndex: preferences !equals values");
             }
         }
-
+        Log.d(TAG, "getValueIndex: " + valueIndex);
         return valueIndex;
     }
     private void CreateGeofenceToComplete() {
-
-        if (isVisitedPreferences() != dormDefault){
-            Log.d(TAG, "CreateGeofenceToComplete: GEOFENCES ALREADY EXIST");
-            return;
-        }
-        getValueIndex();
+        getValueIndex();//determines where to start building geofences
         //create the geofence list
         geofenceList = new ArrayList<>();
         Toast.makeText(this.getActivity(), "from create geofence", Toast.LENGTH_SHORT).show();
