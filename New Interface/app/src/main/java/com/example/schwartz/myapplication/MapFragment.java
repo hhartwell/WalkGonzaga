@@ -148,8 +148,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         Log.d(TAG, "onCreate: RUNNING");
         destinationPoint = new ArrayList<>();
         //destinationPoint.add(new LatLng(47.667246,-117.401390)); // crosby
-        destinationPoint.add(new LatLng(47.655164, -117.463540));//Dani's house
-        //destinationPoint.add(new LatLng(47.666384, -117.401010));//Library
+        //destinationPoint.add(new LatLng(47.655164, -117.463540));//Dani's house
+        destinationPoint.add(new LatLng(47.666384, -117.401010));//Library
         //destinationPoint.add(new LatLng(47.667132, -117.399772));//Hemmingson
         destinationPoint.add(new LatLng(47.667834, -117.401336));//DeSmet
         destinationPoint.add(new LatLng(47.667649, -117.400308));//Welch
@@ -212,9 +212,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                     @Override
                     public void onClick(View view) {
                         System.out.println("FAB CLICKED");
-                        Intent i = new Intent(getActivity(), ARCameraActivity.class);
-                        MapFragment.this.startActivity(i);
-                        Log.d(TAG, i.toString());
+                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.clear();
+                        editor.apply();
                     }
                 });
             }
