@@ -110,8 +110,16 @@ public class MainActivity extends AppCompatActivity  {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         BottomNavigationViewHelper.removeShiftMode(navigation);
+
+        Log.d(TAG, "onCreate: " );
+
         if (savedInstanceState != null){
+            Log.d(TAG, "onCreate: " + savedInstanceState.toString());
             Bundle extras = getIntent().getExtras();
+            if (extras.getString("dormVisited") == null) {
+                Log.d(TAG, "onCreate: " + "dormVisited was null");
+                loadFragment(new HomeFragment());
+            }
             GalleryFragment galleryFragment = new GalleryFragment();
             galleryFragment.setArguments(extras);
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -130,6 +138,11 @@ public class MainActivity extends AppCompatActivity  {
         Log.d(TAG, "ONRESUME");
         Bundle bundle = getIntent().getExtras();
         if (bundle != null){
+            Log.d(TAG, "onResume: " + bundle.getString("dormVisited"));
+            if (bundle.getString("dormVisited") == null){
+                loadFragment(new HomeFragment());
+                return;
+            }
             Log.d(TAG, "bundle: " + bundle.getString("dormVisited"));
             Bundle extras = getIntent().getExtras();
             GalleryFragment galleryFragment = new GalleryFragment();
@@ -156,7 +169,6 @@ public class MainActivity extends AppCompatActivity  {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();
-
     }
 
     /**

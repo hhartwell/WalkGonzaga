@@ -24,16 +24,16 @@
             android:background="#C1C6C8"
             android:columnCount="1">
 
-            <Button
-                android:id="@+id/numberPicker"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:background="#041E42"
-                android:fontFamily="@font/raleway"
-                android:padding="10dp"
-                android:text=""
-                android:textColor="#C1C6C8" />
+            <!--<Button-->
+                <!--android:id="@+id/numberPicker"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_margin="5dp"-->
+                <!--android:background="#041E42"-->
+                <!--android:fontFamily="@font/raleway"-->
+                <!--android:padding="10dp"-->
+                <!--android:text=""-->
+                <!--android:textColor="#C1C6C8" />-->
 
             <Button
                 android:id="@+id/btnFindNearest"
@@ -58,8 +58,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right|top"
             android:layout_margin="@dimen/fab_margin"
-            app:backgroundTint="@color/gradient_end"
-            app:srcCompat="@drawable/book" />
+            android:background="#041E42"
+            android:text="Reset Tour"
+            app:backgroundTint="#041E42"
+            app:srcCompat="@drawable/reset" />
 
     </GridLayout>
 
