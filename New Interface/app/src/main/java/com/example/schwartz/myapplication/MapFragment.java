@@ -122,7 +122,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     private Geofence geofence;
     private PendingIntent pendingIntent;
     private ArrayList<Geofence> geofenceList;
-    private String[] values = new String[]{"Dani's House", "1.Desmet Hall", "2.Welch Hall", "3.Crimont Hall", "4.Madonna Hall",
+    private String[] values = new String[]{"1.Desmet Hall", "2.Welch Hall", "3.Crimont Hall", "4.Madonna Hall",
             "5.Catherine Monica Hall", "6.Campion House", "7.Alliance House", "8.Robinson", "9.Rebmann"};//MUST MAINTAIN THIS ORDER!
     private String dormDefault = "none";
     private int valueIndex; // needed to see which dorms have been visited
@@ -148,7 +148,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         Log.d(TAG, "onCreate: RUNNING");
         destinationPoint = new ArrayList<>();
         //destinationPoint.add(new LatLng(47.667246,-117.401390)); // crosby
-        destinationPoint.add(new LatLng(47.655164, -117.463540));//Dani's house
+        //destinationPoint.add(new LatLng(47.655164, -117.463540));//Dani's house
         //destinationPoint.add(new LatLng(47.666384, -117.401010));//Library
         //destinationPoint.add(new LatLng(47.667132, -117.399772));//Hemmingson
         destinationPoint.add(new LatLng(47.667834, -117.401336));//DeSmet
