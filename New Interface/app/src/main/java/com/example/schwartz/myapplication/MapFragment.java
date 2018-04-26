@@ -198,8 +198,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         mapFragment.getMapAsync(this);
 
         // number picker
-        numberPicker = view.findViewById(R.id.numberPicker);
-        numberPicker.setOnClickListener(this);
+//        numberPicker = view.findViewById(R.id .numberPicker);
+//        numberPicker.setOnClickListener(this);
 
 
         // fab used for usability testing purposes only
@@ -271,9 +271,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 //            case R.id.btnFindPath:
 //                sendRequest();
 //                break;
-
-            case R.id.numberPicker:
-                numberPickerDialog();
+//
+//            case R.id.numberPicker:
+//                numberPickerDialog();
 
             default:
                 break;
