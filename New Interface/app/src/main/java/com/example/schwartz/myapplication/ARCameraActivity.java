@@ -1,7 +1,7 @@
 package com.example.schwartz.myapplication;
 
 import android.app.Activity;
-import com.gonzaga.walkgonzaga.UnityPlayerActivity;
+import com.gonzaga.walkgu.UnityPlayerActivity;
 /**
  * Imports
  */
@@ -12,7 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 
-import com.gonzaga.walkgonzaga.UnityPlayerActivity;
+//import com.gonzaga.walkgonzaga.UnityPlayerActivity;
 
 import java.lang.reflect.Field;
 
