@@ -149,9 +149,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         destinationPoint = new ArrayList<>();
         //destinationPoint.add(new LatLng(47.667246,-117.401390)); // crosby
         //destinationPoint.add(new LatLng(47.655164, -117.463540));//Dani's house
-
         //destinationPoint.add(new LatLng(47.666384, -117.401010));//Library
-
         //destinationPoint.add(new LatLng(47.667132, -117.399772));//Hemmingson
         destinationPoint.add(new LatLng(47.667834, -117.401336));//DeSmet
         destinationPoint.add(new LatLng(47.667649, -117.400308));//Welch
@@ -614,7 +612,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                     // currently set to crosby. replace first and second arg with geoLat and geoLong respectively
                     .setCircularRegion(
                             destinationPoint.get(i).latitude, destinationPoint.get(i).longitude,
-                            50)
+                            15)
                     // how long the geo fence stays active
                     .setExpirationDuration(Geofence.NEVER_EXPIRE)
                     // how the geo fence will be triggered
