@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="wel13" size="1.000000 0.562500" />
+    <ImageTarget name="wel12" size="1.000000 0.562500" />
+    <ImageTarget name="wel11" size="1.000000 0.562500" />
+    <ImageTarget name="Wel10" size="1.000000 0.562500" />
+    <ImageTarget name="Wel9" size="1.000000 0.562500" />
+    <ImageTarget name="Wel8" size="1.000000 0.562500" />
+    <ImageTarget name="Wel7" size="1.000000 0.562500" />
+    <ImageTarget name="Des11" size="1.000000 0.562500" />
+    <ImageTarget name="Des10" size="1.000000 0.562500" />
+    <ImageTarget name="Des9" size="1.000000 0.562500" />
+    <ImageTarget name="Des8" size="1.000000 0.562500" />
+    <ImageTarget name="Wel6" size="1.000000 1.333333" />
+    <ImageTarget name="Wel5" size="1.000000 1.333333" />
+    <ImageTarget name="Wel4" size="1.000000 1.333333" />
+    <ImageTarget name="Wel3" size="1.000000 1.333333" />
+    <ImageTarget name="Wel2" size="1.000000 1.333333" />
+    <ImageTarget name="Wel1" size="1.000000 1.333333" />
+    <ImageTarget name="Cri6" size="1.000000 0.750000" />
+    <ImageTarget name="Cri5" size="1.000000 0.750000" />
+    <ImageTarget name="Cri4" size="1.000000 1.333333" />
+    <ImageTarget name="Cri3" size="1.000000 0.750000" />
+    <ImageTarget name="Cri2" size="1.000000 0.750000" />
+    <ImageTarget name="Cri1" size="1.000000 0.750000" />
+    <ImageTarget name="Camp55" size="1.000000 1.333333" />
+    <ImageTarget name="Camp44" size="1.000000 1.333333" />
+    <ImageTarget name="Camp33" size="1.000000 1.333333" />
+    <ImageTarget name="Camp22" size="1.000000 0.750000" />
+    <ImageTarget name="Camp11" size="1.000000 0.750000" />
+    <ImageTarget name="Camp3" size="1.000000 1.333333" />
+    <ImageTarget name="Camp2" size="1.000000 1.333333" />
+    <ImageTarget name="Camp1" size="1.000000 0.750000" />
+    <ImageTarget name="Ali4" size="1.000000 0.750000" />
+    <ImageTarget name="Ali3" size="1.000000 0.750000" />
+    <ImageTarget name="Ali2" size="1.000000 1.333333" />
+    <ImageTarget name="Ali1" size="1.000000 1.333333" />
+    <ImageTarget name="Des7" size="1.000000 1.333333" />
+    <ImageTarget name="Des6" size="1.000000 1.333333" />
+    <ImageTarget name="Des5" size="1.000000 1.333333" />
+    <ImageTarget name="Des4" size="1.000000 1.333333" />
+    <ImageTarget name="Des3" size="1.000000 1.333333" />
+    <ImageTarget name="Des2" size="1.000000 1.333333" />
+    <ImageTarget name="Des1" size="1.000000 1.333333" />
+    <ImageTarget name="Mad12" size="1.000000 0.562500" />
+    <ImageTarget name="Mad11" size="1.000000 0.562500" />
+    <ImageTarget name="Mad10" size="1.000000 0.562500" />
+    <ImageTarget name="Mad9" size="1.000000 0.562500" />
+    <ImageTarget name="Mad8" size="1.000000 0.562500" />
+    <ImageTarget name="Mad7" size="1.000000 0.562500" />
+    <ImageTarget name="Mad6" size="1.000000 0.562500" />
+    <ImageTarget name="Mad5" size="1.000000 0.562500" />
     <ImageTarget name="crimont4" size="1.000000 0.562500" />
     <ImageTarget name="crimont3" size="1.000000 0.562500" />
     <ImageTarget name="crimont2" size="1.000000 0.562500" />
@@ -12,10 +62,6 @@
     <ImageTarget name="welch3" size="1.000000 0.562500" />
     <ImageTarget name="welch2" size="1.000000 0.562500" />
     <ImageTarget name="welch1" size="1.000000 0.562500" />
-    <ImageTarget name="Mad4" size="1.000000 0.562500" />
-    <ImageTarget name="Mad3" size="1.000000 0.562500" />
-    <ImageTarget name="Mad2" size="1.000000 0.562500" />
-    <ImageTarget name="Mad1" size="1.000000 0.562500" />
     <ImageTarget name="robinson4" size="1.000000 0.562500" />
     <ImageTarget name="robinson3" size="1.000000 0.562500" />
     <ImageTarget name="robinson2" size="1.000000 0.562500" />
@@ -33,7 +79,6 @@
     <ImageTarget name="campion2" size="1.000000 0.562500" />
     <ImageTarget name="campion1" size="1.000000 0.562500" />
     <ImageTarget name="CampionSign" size="1.000000 0.562500" />
-    <ImageTarget name="LincolnHouse" size="1.000000 0.562500" />
     <ImageTarget name="desmetHall" size="300.000000 276.536316" />
   </Tracking>
 </QCARConfig>
