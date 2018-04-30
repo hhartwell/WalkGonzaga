@@ -16,6 +16,7 @@
         android:text="Father Desmet"
         android:textAlignment="center"
         android:textColor="@android:color/white"
+        android:fontFamily="@font/raleway"
         android:textSize="40sp" />
 
     <ScrollView
@@ -38,12 +39,12 @@
                 android:id="@+id/content"
                 android:layout_width="match_parent"
                 android:layout_height="344dp"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/raleway"
                 android:padding="10dp"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed pretium lacus, eget mattis enim. Aenean sed lacus dapibus, tincidunt felis ac, consectetur velit. Phasellus ac ligula in lectus rhoncus tincidunt. Fusce suscipit mi ac leo lacinia consectetur. Donec a rhoncus nunc. Phasellus tempor ut velit a tincidunt."
+                android:text="Though this residence hall bears his name, Father Pierre-Jean DeSmet never visited Gonzaga University. Fr. DeSmet joined the Society of Jesus (the Jesuits) in [1821] when he was 20 years old. He numbered among the first Jesuits to navigate the upper-Missouri River, and this missionary work brought him to the Rocky Mountains where he lived among and the Sioux, the Montana Salish, and the Nimíipuu (Nez Perce). Fr. DeSmet died fourteen years before Gonzaga was founded, and his fellow Jesuits remembered him when naming this residence hall."
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
-                android:textSize="24sp" />
+                android:textSize="17sp" />
 
         </GridLayout>
     </ScrollView>
