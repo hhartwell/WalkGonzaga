@@ -14,18 +14,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:background="#ff00ff15">
-        <!--
-                <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/floatingActionButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/frameLayout"
-                    android:layout_marginTop="67dp"
-                    android:layout_toEndOf="@+id/nextSceneButton"
-                    android:layout_toRightOf="@+id/nextSceneButton"
-                    android:clickable="true"
-                    android:src="@android:drawable/ic_notification_overlay" />
-            -->
+
     </FrameLayout>
 
     <Button
