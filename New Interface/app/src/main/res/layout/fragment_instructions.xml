@@ -42,30 +42,7 @@
                 android:background="#041E42"
                 android:gravity="center_horizontal"
                 android:padding="10dp"
-                android:text="Displays the image of College Hall with the title of the application."
-                android:textColor="#C1C6C8" />
-
-            <TextView
-                android:id="@+id/tourTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/raleway"
-                android:gravity="center_horizontal"
-                android:padding="10dp"
-                android:text="What Does The Tours Button Do?"
-                android:textColor="#C8102E"
-                android:textSize="20dp" />
-
-            <TextView
-                android:id="@+id/tourBody"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
-                android:layout_marginRight="35dp"
-                android:background="#041E42"
-                android:gravity="center_horizontal"
-                android:padding="10dp"
-                android:text="Starts with a list of buttons with all of the different tours you can take. Once you select a tour button, a map will pop-up to direct you to the location of your choosing. After reaching the intended destination, you will have access to the camera to view the augmented reality (AR) imaging. Make sure that you point the camera directly at the designated target in order to view this AR imaging."
+                android:text="Displays the image of College Hall with the title of the application. There is a start button under the title that allows you to pick the tour you would like to go on. Once you select a tour, a map will pop-up to direct you to the location of your choosing. After reaching the intended destination, you will have access to the camera to view the augmented reality (AR) imaging. Make sure that you point the camera directly at the designated target in order to view this AR imaging."
                 android:textColor="#C1C6C8" />
 
             <TextView
