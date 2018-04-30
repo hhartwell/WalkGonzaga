@@ -122,8 +122,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     private Geofence geofence;
     private PendingIntent pendingIntent;
     private ArrayList<Geofence> geofenceList;
-    private String[] values = new String[]{"1.Desmet Hall", "2.Welch Hall", "3.Crimont Hall", "4.Madonna Hall",
-            "5.Catherine Monica Hall", "6.Campion House", "7.Alliance House", "8.Robinson", "9.Rebmann"};//MUST MAINTAIN THIS ORDER!
+    private String[] values = new String[]{"Desmet Hall", "Welch Hall", "Crimont Hall", "Madonna Hall",
+            "Catherine Monica Hall", "Campion House", "Alliance House", "Robinson", "Rebmann"};//MUST MAINTAIN THIS ORDER!
     private String dormDefault = "none";
     private int valueIndex; // needed to see which dorms have been visited
     // number picker variables

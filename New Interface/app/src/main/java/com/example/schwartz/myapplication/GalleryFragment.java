@@ -143,6 +143,15 @@ public class GalleryFragment extends Fragment implements View.OnClickListener{
                         getActivity().startActivity(i);
                     }
                 });
+            default:
+                imageButtons.get(3).setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(getActivity(), FatherDesmetActivity.class);
+                        i.putExtra("dormVisited", dorm);
+
+                    }
+                });
         }
     }
     /**
