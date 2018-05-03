@@ -56,16 +56,6 @@ public class MainActivity extends AppCompatActivity  {
                     return true;
 
                 /**
-
-                 * Tours Button/Map
-                 */
-//                case R.id.navigation_tours:
-//                    fragment = new ToursFragment();
-//                    loadFragment(fragment);
-//                    return true;
-
-                /**
-
                  * Visited Button
                  */
                 case R.id.navigation_gallery:
@@ -102,8 +92,6 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         /**
          * Initiates bottom navigation
          */
@@ -132,6 +120,9 @@ public class MainActivity extends AppCompatActivity  {
         getSupportActionBar().hide();
     }
 
+    /**
+     * gets gallery
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -156,6 +147,9 @@ public class MainActivity extends AppCompatActivity  {
         }
     }
 
+    /**
+     * gets visited
+     */
     @Override
     protected void onDestroy() {
         super.onDestroy();
