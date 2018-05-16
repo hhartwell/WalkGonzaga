@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/desMet.unity
-  isLoaded: 1
-  isActive: 1
